@@ -1,13 +1,14 @@
 import '../src/Themes/globalStyle.css'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './Themes/default'
-import { CornerPage } from './Components/CornerPage'
+
+import { RouteApp } from './Routes'
 
 function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CornerPage />
+      <RouteApp />
     </ThemeProvider>
   )
 }
