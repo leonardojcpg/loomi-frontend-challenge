@@ -5,4 +5,6 @@ export const defaultTheme = {
   "grey-600": "#595F6E",
   "grey-700": "#4D4F5C",
   "green-500": "#558B2F",
+  "primaryFont": "Source Sans 3",
+  "secondaryFont": "Roboto",
 };

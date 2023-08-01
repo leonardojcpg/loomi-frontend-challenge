@@ -19,6 +19,11 @@ export const LeafImg = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translate(0, -190%);
+    transform: translate(0, -170%);
+`
+
+export const HelloMessageSpanContainer = styled.div`
+    border: 1px solid blue;
+    transform: translate(0, -620%);
 
 `
