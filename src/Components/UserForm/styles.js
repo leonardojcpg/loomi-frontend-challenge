@@ -16,7 +16,14 @@ export const UserFormBackgroundContainer = styled.div`
 
     form{
         margin-bottom: 100px;
-
+        .checkbox{
+            margin: 2px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #595F6E;
+            border-radius: 5px;
+            width: 15px;
+            height: 15px;
+        }
     }
 
     input{
@@ -62,13 +69,6 @@ export const CheckboxContainer = styled.div`
     display: flex;
 `
 
-export const CheckboxInput = styled.div`
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #595F6E;
-    border-radius: 5px;
-    width: 15px;
-    height: 15px;
-`
 export const CheckboxLabel = styled.label`
     width: 92px;
     height: 23px;

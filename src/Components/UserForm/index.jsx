@@ -3,7 +3,6 @@ import {
   LeafImg,
   HelloMessageSpanContainer,
   CheckboxContainer,
-  CheckboxInput,
   CheckboxLabel,
 } from "./styles.js";
 import leaf from "./assets/leaf.png";
@@ -19,13 +18,13 @@ export const UserForm = () => {
       </HelloMessageSpanContainer>
       <form>
         <label>UserName</label>
-        <input type="name" />
+        <input className="inputName" type="name" />
 
         <label>Password</label>
-        <input type="password" />
+        <input className="inputPassword" type="password" />
 
         <CheckboxContainer>
-          <CheckboxInput type="checkbox" id="remindMe" name="remindMe" />
+          <input className="checkbox" type="checkbox" id="remindMe" name="remindMe" />
           <CheckboxLabel htmlFor="remindMe">Remind-me</CheckboxLabel>
         </CheckboxContainer>
       </form>
