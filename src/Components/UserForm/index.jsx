@@ -1,5 +1,13 @@
-import { UserFormBackgroundContainer, LeafImg, HelloMessageSpanContainer } from "./styles.js";
+import {
+  UserFormBackgroundContainer,
+  LeafImg,
+  HelloMessageSpanContainer,
+  CheckboxContainer,
+  CheckboxInput,
+  CheckboxLabel,
+} from "./styles.js";
 import leaf from "./assets/leaf.png";
+
 export const UserForm = () => {
   return (
     <UserFormBackgroundContainer>
@@ -9,7 +17,18 @@ export const UserForm = () => {
       <HelloMessageSpanContainer>
         <p>Olá, faça seu login abaixo!</p>
       </HelloMessageSpanContainer>
-      <div className="form"></div>
+      <form>
+        <label>UserName</label>
+        <input type="name" />
+
+        <label>Password</label>
+        <input type="password" />
+
+        <CheckboxContainer>
+          <CheckboxInput type="checkbox" id="remindMe" name="remindMe" />
+          <CheckboxLabel htmlFor="remindMe">Remind-me</CheckboxLabel>
+        </CheckboxContainer>
+      </form>
       <div className="forgotPassword"></div>
       <div className="button"></div>
     </UserFormBackgroundContainer>
