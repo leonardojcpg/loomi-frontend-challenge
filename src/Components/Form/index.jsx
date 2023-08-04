@@ -5,8 +5,11 @@ import { CheckboxContainer, CheckboxLabel } from "./styles.js";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import {useHistory} from 'react-router-dom'
+
+import { toast } from "react-hot-toast";
+import api from "../../Service/api.js";
+
 
 export const Form = ({ labelText, labelPasswordText, checkboxText }) => {
   const schema = yup.object().shape({
@@ -24,7 +27,7 @@ export const Form = ({ labelText, labelPasswordText, checkboxText }) => {
 
   const history = useHistory();
 
-  const handleSignup = (data) => {
+  const handleSignUp = (data) => {
     api
       .post("/users", data)
       .then((response) => {
@@ -39,7 +42,7 @@ export const Form = ({ labelText, labelPasswordText, checkboxText }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(handleSignUp)}>
         <label>{labelText}</label>
         <input
           className="inputName"
