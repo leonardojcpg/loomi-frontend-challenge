@@ -5,7 +5,7 @@ export const UserFormBackgroundContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 25rem;
+    width: 20rem;
     height: 31.25rem;
     margin: 0 auto;
     position: absolute;
@@ -15,25 +15,33 @@ export const UserFormBackgroundContainer = styled.div`
     border: 1px solid red;
 
     form{
-        margin-bottom: 100px;
+        margin-bottom: 5.625rem;
         .checkbox{
-            margin: 2px;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             border: 1px solid #595F6E;
-            border-radius: 5px;
-            width: 15px;
-            height: 15px;
+            border-radius: 0.313rem;
+            width: 1rem;
+            height: 0.938rem;
         }
     }
 
-    input{
-        width: 200px;
-        height: 30px;
+    .inputName{
+        padding-left: 0.5rem;
+        width: 16.875rem;
+        height: 1.875rem;
         display: flex;
         border: 0.063rem solid #558B2F;
         border-radius: 0.35rem;
         transform: translate(0%, -30%);
-        
+    }
+
+    .inputPassword{
+        width: 16.875rem;
+        height: 1.875rem;
+        display: flex;
+        border: 0.063rem solid #558B2F;
+        border-radius: 0.35rem;
+        transform: translate(0%, -30%);
     }
 
     label{
@@ -41,9 +49,21 @@ export const UserFormBackgroundContainer = styled.div`
         position: relative;
         z-index: 1;
         background-color: white; 
-        padding: 0 4px;
-        font: 600 8px Source Sans Pro;
+        padding: 0 0.25rem;
+        font: 600 0.625rem Source Sans Pro;
         letter-spacing: 0.26px;
+        color: #558B2F;
+    }
+
+    input.checkbox{
+        margin-top: -0.05rem;
+        margin-right: -0.6rem;
+
+    }
+
+    .forgotPassword{
+        margin-top: -5rem;
+        font-size: 0.75rem;
         color: #558B2F;
     }
 `;
@@ -57,10 +77,10 @@ export const LeafImg = styled.div`
 
 export const HelloMessageSpanContainer = styled.div`
     transform: translate(0, -90%);
-    width: 461px;
+    width: 28.813rem;
     text-align: center;
-    font: normal normal 400 10px Source Sans Pro;
-    letter-spacing: 0.8px;
+    font: normal 400 0.625rem Source Sans Pro;
+    letter-spacing: 0.05rem;
     color: #595F6E;
     opacity: 1;
 `
@@ -70,11 +90,12 @@ export const CheckboxContainer = styled.div`
 `
 
 export const CheckboxLabel = styled.label`
-    width: 92px;
-    height: 23px;
+    .remindMe{
+        font-family: "Source Sans Pro";
+    }
+    width: 5.75rem;
+    height: 1.438rem;
     text-align: left;
-    font: 400 20px Roboto;
-    letter-spacing: 0px;
     color: #4D4F5C;
     opacity: 1;
 `

@@ -5,7 +5,9 @@ import {
   CheckboxContainer,
   CheckboxLabel,
 } from "./styles.js";
+
 import leaf from "./assets/leaf.png";
+import { Button } from "../Button/index.jsx";
 
 export const UserForm = () => {
   return (
@@ -25,11 +27,13 @@ export const UserForm = () => {
 
         <CheckboxContainer>
           <input className="checkbox" type="checkbox" id="remindMe" name="remindMe" />
-          <CheckboxLabel htmlFor="remindMe">Remind-me</CheckboxLabel>
+          <CheckboxLabel className="remindMe" htmlFor="remindMe">Remind-me</CheckboxLabel>
         </CheckboxContainer>
       </form>
-      <div className="forgotPassword"></div>
-      <div className="button"></div>
+      <div className="forgotPassword">
+        <a href="_blank">Esqueci minha senha</a>
+      </div>
+        <Button buttonText="Register"/>
     </UserFormBackgroundContainer>
   );
 };
