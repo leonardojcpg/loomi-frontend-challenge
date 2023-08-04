@@ -12,7 +12,6 @@ export const UserFormBackgroundContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid red;
 
     form{
         margin-bottom: 5.625rem;
@@ -36,6 +35,7 @@ export const UserFormBackgroundContainer = styled.div`
     }
 
     .inputPassword{
+        padding-left: 0.5rem;
         width: 16.875rem;
         height: 1.875rem;
         display: flex;
@@ -79,7 +79,7 @@ export const HelloMessageSpanContainer = styled.div`
     transform: translate(0, -90%);
     width: 28.813rem;
     text-align: center;
-    font: normal 400 0.625rem Source Sans Pro;
+    font: normal 400 0.725rem Source Sans Pro;
     letter-spacing: 0.05rem;
     color: #595F6E;
     opacity: 1;

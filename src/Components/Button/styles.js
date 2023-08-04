@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const RegisterButton = styled.button`
+export const ButtonComponent = styled.button`
     width: 230px;
     height: 29px;
     border: none;
@@ -11,4 +11,9 @@ export const RegisterButton = styled.button`
     font-size: 13px;
     border-radius: 15px;
     margin-top: .5rem;
+
+    &:hover{
+        opacity: 90%;
+        cursor: pointer;
+    }
 `

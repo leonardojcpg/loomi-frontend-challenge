@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-import { RegisterButton } from "./styles.js";
+import { ButtonComponent } from "./styles.js";
 
 export const Button = ({buttonText}) => {
-  return <RegisterButton>{buttonText}</RegisterButton>;
+  return <ButtonComponent>{buttonText}</ButtonComponent>;
 };
 
 
