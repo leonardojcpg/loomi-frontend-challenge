@@ -1,13 +1,12 @@
 import {
   UserFormBackgroundContainer,
   LeafImg,
-  HelloMessageSpanContainer,
-  CheckboxContainer,
-  CheckboxLabel,
+  HelloMessageSpanContainer
 } from "./styles.js";
 
 import leaf from "./assets/leaf.png";
 import { Button } from "../Button/index.jsx";
+import { Form } from "../Form/index.jsx";
 
 export const UserForm = () => {
   return (
@@ -18,22 +17,15 @@ export const UserForm = () => {
       <HelloMessageSpanContainer>
         <p>Olá, faça seu login abaixo!</p>
       </HelloMessageSpanContainer>
-      <form>
-        <label>UserName</label>
-        <input className="inputName" type="name" />
-
-        <label>Password</label>
-        <input className="inputPassword" type="password" />
-
-        <CheckboxContainer>
-          <input className="checkbox" type="checkbox" id="remindMe" name="remindMe" />
-          <CheckboxLabel className="remindMe" htmlFor="remindMe">Remind-me</CheckboxLabel>
-        </CheckboxContainer>
-      </form>
+      <Form
+        labelText="Usuário"
+        labelPasswordText="Senha"
+        checkboxText="Lembrar-me"
+      />
       <div className="forgotPassword">
         <a href="_blank">Esqueci minha senha</a>
       </div>
-        <Button buttonText="Register"/>
+      <Button buttonText="Cadastrar" />
     </UserFormBackgroundContainer>
   );
 };
