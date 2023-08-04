@@ -66,6 +66,11 @@ export const UserFormBackgroundContainer = styled.div`
         font-size: 0.75rem;
         color: #558B2F;
     }
+
+    .alreadyRegistered{
+        margin-top: 1rem;
+        font-size: 0.7rem;
+    }
 `;
 
 export const LeafImg = styled.div`
