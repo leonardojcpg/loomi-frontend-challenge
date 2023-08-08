@@ -5,15 +5,15 @@ import { CheckboxContainer, CheckboxLabel } from "./styles.js";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-/* import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 import { toast } from "react-hot-toast";
-import api from "../../Service/api.js"; */
+import api from "../../Service/api.js";
 
 
 export const Form = ({ labelText, labelPasswordText, checkboxText }) => {
   const schema = yup.object().shape({
-    username: yup.string().required("Usuário obrigatorio"),
+    email: yup.string().required("Email obrigatorio"),
     password: yup.string().required("Senha Obrigatoria"),
   });
 
@@ -25,9 +25,9 @@ export const Form = ({ labelText, labelPasswordText, checkboxText }) => {
     resolver: yupResolver(schema),
   });
 
-  //const history = useHistory();
+  const history = useHistory();
 
-/*   const handleSignUp = (data) => {
+   const handleSignUp = (data) => {
     api
       .post("/users", data)
       .then(() => {
@@ -39,16 +39,16 @@ export const Form = ({ labelText, labelPasswordText, checkboxText }) => {
       });
   };
 
- */
+ 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(handleSignUp)}>
         <label>{labelText}</label>
         <input
           className="inputName"
-          type="name"
-          {...register("user")}
-          error={!!errors.user?.message}
+          type="email"
+          {...register("email")}
+          error={!!errors.email?.message}
         />
 
         <label>{labelPasswordText}</label>
