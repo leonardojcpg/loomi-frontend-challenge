@@ -5,8 +5,7 @@ import {
 } from "./styles.js";
 
 import leaf from "./assets/leaf.png";
-import { Button } from "../Button/index.jsx";
-import { Form } from "../Form/index.jsx";
+import { RegisterForm } from "../Form/registerForm.jsx";
 
 export const UserForm = () => {
   return (
@@ -17,15 +16,11 @@ export const UserForm = () => {
       <HelloMessageSpanContainer>
         <p>Olá, faça seu cadastro abaixo!</p>
       </HelloMessageSpanContainer>
-      <Form
-        labelText="Usuário"
+      <RegisterForm
+        labelText="Email"
         labelPasswordText="Senha"
         checkboxText="Lembrar-me"
       />
-      <div className="forgotPassword">
-        <a href="_blank">Esqueci minha senha</a>
-      </div>
-      <Button buttonText="Cadastrar" />
       <div className="alreadyRegistered">
         <a href="/">Ja é registrado? Faça seu login</a>
       </div>

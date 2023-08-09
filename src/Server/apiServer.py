@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import mysql.connector
 
 apiServer = Flask(__name__)
+CORS(apiServer)
 
 # Conexão ao banco de dados
 connection = mysql.connector.connect(
@@ -20,27 +22,21 @@ def get_users():
     cursor.close()
     return jsonify(result)
 
-@apiServer.route('/users/<int:id>', methods=['GET'])
-def get_user_by_id(id):
-    cursor = connection.cursor()
-    command = f'SELECT * FROM users WHERE id = {id}'
-    cursor.execute(command)
-    result = cursor.fetchone()
-    cursor.close()
-    if result:
-        return jsonify(result)
-    else:
-        return jsonify({"message": "User not found"}), 404
-
 @apiServer.route('/users', methods=['POST'])
 def create_user():
     new_user = request.get_json()
     cursor = connection.cursor()
-    command = f'INSERT INTO users (email, password) VALUES ("{new_user["email"]}", "{new_user["password"]}")'
-    cursor.execute(command)
-    connection.commit()
-    cursor.close()
-    return jsonify({"message": "User created successfully"}), 201
+    try:
+        command = "INSERT INTO users (email, password) VALUES (%s, %s)"
+        values = (new_user["email"], new_user["password"])
+        cursor.execute(command, values)
+        connection.commit()
+        cursor.close()
+        return jsonify({"message": "User created successfully"}), 201
+    except mysql.connector.Error as err:
+        print("Error:", err)
+        return jsonify({"message": "Failed to create user"}), 500
+
 
 if __name__ == '__main__':
     apiServer.run(port=3000, host='localhost', debug=True)

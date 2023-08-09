@@ -16,3 +16,10 @@ export const CheckboxLabel = styled.label`
     color: #4D4F5C;
     opacity: 1;
 `
+
+export const ForgotPassword = styled.div`
+    margin-top: 1rem;
+    margin-left: 5rem;
+    font-size: 0.75rem;
+    color: #558B2F;
+`

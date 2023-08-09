@@ -11,9 +11,9 @@ export const ButtonComponent = styled.button`
     font-size: 13px;
     border-radius: 15px;
     margin-top: .5rem;
+    margin-left: 1.4rem;
 
     &:hover{
         opacity: 90%;
-        cursor: pointer;
     }
 `

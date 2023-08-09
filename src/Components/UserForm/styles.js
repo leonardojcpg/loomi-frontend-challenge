@@ -61,14 +61,8 @@ export const UserFormBackgroundContainer = styled.div`
 
     }
 
-    .forgotPassword{
-        margin-top: -5rem;
-        font-size: 0.75rem;
-        color: #558B2F;
-    }
-
     .alreadyRegistered{
-        margin-top: 1rem;
+        margin-top: -5rem;
         font-size: 0.7rem;
     }
 `;
