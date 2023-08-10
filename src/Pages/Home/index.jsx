@@ -1,5 +1,4 @@
 import { CornerPage } from "../../Components/CornerPage";
-
 import {
   UserFormBackgroundContainer,
   LeafImg,
@@ -7,7 +6,7 @@ import {
 } from "../../Components/UserForm/styles";
 
 import leaf from "../../Components/UserForm/assets/leaf.png";
-import { RegisterForm } from "../../Components/Form/registerForm";
+import { LoginForm } from "../../Components/Form/loginForm";
 
 export const Home = () => {
   return (
@@ -20,10 +19,9 @@ export const Home = () => {
         <HelloMessageSpanContainer>
           <p>Olá, faça seu cadastro abaixo!</p>
         </HelloMessageSpanContainer>
-        <RegisterForm
+        <LoginForm
           labelText="Email"
           labelPasswordText="Senha"
-          checkboxText="Lembrar-me"
         />
         <div className="alreadyRegistered">
           <a href="/">Ja é registrado? Faça seu login</a>
