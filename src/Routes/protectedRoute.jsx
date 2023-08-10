@@ -1,5 +1,6 @@
 // Rotas protegidas
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useAuth } from '../AuthProvider/UseAuth';
 import PropTypes from 'prop-types'
 
