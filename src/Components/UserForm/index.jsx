@@ -5,7 +5,7 @@ import {
 } from "./styles.js";
 
 import leaf from "./assets/leaf.png";
-import { RegisterForm } from "../Form/registerForm.jsx";
+import { RegisterForm } from "../Form/RegisterForm/registerForm.jsx";
 
 export const UserForm = () => {
   return (

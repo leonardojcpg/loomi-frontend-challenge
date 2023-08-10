@@ -2,15 +2,13 @@
 import PropTypes from "prop-types";
 import { ForgotPassword } from "./loginFormStyles";
 import { useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../../Button/index.jsx";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 export const LoginForm = ({ labelText, labelPasswordText }) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const history = useHistory()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,9 +27,10 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
       if (response.status === 200) {
         const data = await response.json();
         const token = data.token;
+        localStorage.setItem("authToken", token);
         try {
           const authenticatedResponse = await fetch(
-            "http://localhost:3000/dashboard",
+            "http://localhost:3000/users",
             {
               method: "GET",
               headers: {
@@ -42,7 +41,6 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
 
           if (authenticatedResponse.status === 200) {
             toast.success("Login successful");
-            history.push("/dashboard");
           } else {
             toast.error("Failed to fetch dashboard data");
           }
@@ -56,6 +54,7 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
       toast.error(`Error logging in: ${error.message}`);
     }
   };
+
   return (
     <form onSubmit={handleLogin}>
       <label>{labelText}</label>

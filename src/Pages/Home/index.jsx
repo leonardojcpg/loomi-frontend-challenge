@@ -6,7 +6,7 @@ import {
 } from "../../Components/UserForm/styles";
 
 import leaf from "../../Components/UserForm/assets/leaf.png";
-import { LoginForm } from "../../Components/Form/loginForm";
+import { LoginForm } from "../../Components/Form/LoginForm/loginForm";
 
 export const Home = () => {
   return (
