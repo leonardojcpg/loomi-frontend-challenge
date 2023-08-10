@@ -1,14 +1,13 @@
 /* eslint-disable react/no-unknown-property */
 import PropTypes from "prop-types";
 import { CheckboxContainer, CheckboxLabel, ForgotPassword } from "./styles.js";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-
 import { Button } from "../../Button/index.jsx";
-//import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Api } from "../../../Service/index.jsx";
+import { toast } from "react-toastify";
 
 export const RegisterForm = ({
   labelText,
@@ -21,14 +20,22 @@ export const RegisterForm = ({
     password: yup.string().required("Password required")
   })
 
-
   const {register, formState: {errors}, handleSubmit} = useForm({
     resolver: yupResolver(schema)
   })
 
+  const handleSignUp = async (data) => {
+    try {
+      const response = await Api.post("/users", data)
+      toast.success("User registered: ", response.data)
+    } catch (error){
+      toast.error("Error registering user: ", error)
+    }
+  }
+
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(handleSignUp)}>
       <label>{labelText}</label>
       <input
         className="inputName"
