@@ -30,6 +30,7 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
   const navigate = useNavigate()
 
   const handleLogin = async (data) => {
+    console.log(data)
     try {
       const response = await Api.post("/login", data);
       const { token } = response.data; 
@@ -38,6 +39,7 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
       navigate("/dashboard");
       
     } catch (error) {
+      console.log(error)
       toast.error(`Error logging in: ${error.message}`);
     }
   };

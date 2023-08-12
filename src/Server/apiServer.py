@@ -11,7 +11,7 @@ apiServer = Flask(__name__)
 CORS(apiServer)
 apiServer.config['SECRET_KEY'] = secrets.token_hex(64)
 
-# Conexão ao banco de dados
+
 connection = mysql.connector.connect(
     host='localhost',
     user='root',
@@ -27,22 +27,23 @@ def login():
     
     if not email or not password:
         return jsonify({'message': 'Email and password are required'}), 400
-
+    
     cursor = connection.cursor()
-    command = "SELECT id, password FROM users WHERE email = %s"
+    command = "SELECT idusers, password FROM users WHERE email = %s"
     values = (email,)
     cursor.execute(command, values)
-    user_data = cursor.fetchone()
-
-    if user_data:
-        user_id, stored_password_hash = user_data
-        if bcrypt.checkpw(password.encode('utf-8'), stored_password_hash.encode('utf-8')):
-            token = jwt.encode({'user_id': user_id}, apiServer.config['SECRET_KEY'], algorithm='HS256')
-            cursor.close()
-            return jsonify({'token': token})
+    row = cursor.fetchone()
+    
+    if row is not None:
+        idusers, db_password = row
+        if db_password == password:
+            return jsonify({'message': 'Login successful'}), 200
+        else:
+            return jsonify({'message': 'Invalid password'}), 401
+    else:
+        return jsonify({'message': 'User not found'}), 404
     
     cursor.close()
-    return jsonify({'message': 'Invalid credentials'}), 401
 
 
 
@@ -65,9 +66,7 @@ def create_user():
         values = (new_user["email"], new_user["password"])
         cursor.execute(command, values)
         connection.commit()
-        # Pegar o ID do usuário recém-criado
         user_id = cursor.lastrowid
-        # Gerar token com o user_id
         token = jwt.encode({'user_id': user_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, apiServer.config['SECRET_KEY'], algorithm='HS256')
 
         cursor.close()
