@@ -64,6 +64,9 @@ export const UserFormBackgroundContainer = styled.div`
     .alreadyRegistered{
         margin-top: -5rem;
         font-size: 0.7rem;
+        color: inherit;
+        font-family: "Roboto";
+        
     }
 `;
 

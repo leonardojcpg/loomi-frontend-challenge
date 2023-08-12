@@ -13,7 +13,7 @@ export const CornerLeft = styled.div`
 `;
 
 export const CornerRight = styled.div`
-    margin: -0.3rem;
+    margin: -0.5rem;
     position: fixed;
     bottom: 0;
     right: 0;

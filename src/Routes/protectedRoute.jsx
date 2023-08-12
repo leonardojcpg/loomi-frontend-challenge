@@ -3,10 +3,10 @@ import { useAuth } from '../AuthProvider/UseAuth';
 import PropTypes from 'prop-types';
 
 const ProtectedRoute = ({ path, element }) => {
-    const { token } = useAuth(); // Substitua por como você obtém o token do contexto de autenticação
+    const { token } = useAuth(); 
 
     if (!token) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to="/" replace />;
     }
 
     return <Route path={path} element={element} />;

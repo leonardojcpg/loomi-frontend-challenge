@@ -8,6 +8,7 @@ import { Button } from "../../Button/index.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import { Api } from "../../../Service/index.jsx";
 import { toast } from "react-toastify";
+import {useNavigate} from "react-router-dom"
 
 export const RegisterForm = ({
   labelText,
@@ -24,10 +25,13 @@ export const RegisterForm = ({
     resolver: yupResolver(schema)
   })
 
+  const navigate = useNavigate()
+
   const handleSignUp = async (data) => {
     try {
       const response = await Api.post("/users", data)
       toast.success("User registered: ", response.data)
+      navigate("/")
     } catch (error){
       toast.error("Error registering user: ", error)
     }

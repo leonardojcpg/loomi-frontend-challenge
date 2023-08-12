@@ -24,7 +24,7 @@ export const Home = () => {
           labelPasswordText="Senha"
         />
         <div className="alreadyRegistered">
-          <a href="/">Ja é registrado? Faça seu login</a>
+          <a href="/register">Faça seu cadastro</a>
         </div>
       </UserFormBackgroundContainer>
     </>
