@@ -1,6 +1,7 @@
 import {createContext, useState} from 'react'
 import PropTypes from "prop-types";
 import { Api } from '../../Service';
+import {toast} from 'react-toastify'
 
 const AuthContext = createContext()
 
@@ -16,14 +17,19 @@ export const AuthProvider = ({children}) => {
         return {};
     });
     const login = async (data) => {
-        const response = await Api.post("/login", data)
-        const [token, email] = response.data
-
-        localStorage.setItem("@loomiChallange:token", token)
-        localStorage.setItem("@loomiChallenge:email", JSON.stringify(email))
-
-        setData({token, email})
-    }
+        try {
+          const response = await Api.post("/login", data);
+          const { token, email } = response.data;
+      
+          localStorage.setItem("@loomiChallange:token", token);
+          localStorage.setItem("@loomiChallenge:email", JSON.stringify(email));
+      
+          setData({ token, email });
+        } catch (error) {
+          toast.error("Error logging in:", error);
+        }
+      };
+      
 
     const logout = () => {
         localStorage.removeItem("@loomiChallange:token");

@@ -4,6 +4,8 @@ import jwt
 import datetime
 import mysql.connector
 import secrets
+import bcrypt
+
 
 apiServer = Flask(__name__)
 CORS(apiServer)
@@ -20,18 +22,25 @@ connection = mysql.connector.connect(
 @apiServer.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    email = data['email']
-    password = data['password']
-    cursor = connection.cursor()
-    command = "SELECT id FROM users WHERE email = %s AND password = %s"
-    values = (email, password)
-    cursor.execute(command, values)
-    user_id = cursor.fetchone()
-    if user_id:
-        token = jwt.encode({'user_id': user_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, apiServer.config['SECRET_KEY'], algorithm='HS256')
-        cursor.close()
-        return jsonify({'token': token})
+    email = data.get('email')
+    password = data.get('password')
+    
+    if not email or not password:
+        return jsonify({'message': 'Email and password are required'}), 400
 
+    cursor = connection.cursor()
+    command = "SELECT id, password FROM users WHERE email = %s"
+    values = (email,)
+    cursor.execute(command, values)
+    user_data = cursor.fetchone()
+
+    if user_data:
+        user_id, stored_password_hash = user_data
+        if bcrypt.checkpw(password.encode('utf-8'), stored_password_hash.encode('utf-8')):
+            token = jwt.encode({'user_id': user_id}, apiServer.config['SECRET_KEY'], algorithm='HS256')
+            cursor.close()
+            return jsonify({'token': token})
+    
     cursor.close()
     return jsonify({'message': 'Invalid credentials'}), 401
 

@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Api } from "../../../Service/index.jsx";
 import { toast } from "react-toastify";
 
+import { useNavigate } from "react-router-dom";
+
 export const LoginForm = ({ labelText, labelPasswordText }) => {
   const schema = yup.object({
     email: yup.string().required("Email required"),
@@ -25,16 +27,21 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate()
+
   const handleLogin = async (data) => {
     try {
-      const response = await Api.post("/users", data);
-      const { token } = response.data;
+      const response = await Api.post("/login", data);
+      const { token } = response.data; 
       localStorage.setItem("token", token);
       toast.success("Logged in successfully!");
-    } catch (errror) {
-      toast.error("Error loggin in:", errors);
+      navigate("/dashboard");
+      
+    } catch (error) {
+      toast.error(`Error logging in: ${error.message}`);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit(handleLogin)}>
