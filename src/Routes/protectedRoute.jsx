@@ -1,30 +1,20 @@
-// Rotas protegidas
-import { Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import { useAuth } from '../AuthProvider/UseAuth';
-import PropTypes from 'prop-types'
+import { Route, Navigate } from 'react-router-dom';
+import { useAuth } from '../AuthProvider/UseAuth'; 
+import PropTypes from 'prop-types';
 
+const ProtectedRoute = ({ path, element }) => {
+    const { token } = useAuth(); // Substitua por como você obtém o token do contexto de autenticação
 
-const ProtectedRoute = ({ isPrivate = false, component: Component, ...rest }) => {
-    const {token} = useAuth()
+    if (!token) {
+        return <Navigate to="/login" replace />;
+    }
 
-    return(
-        <Route 
-        {...rest} 
-        render={() => {
-            return isPrivate === !!token? (
-                <Component/>
-            ) : (
-                <Redirect to={isPrivate ? "/" : "/dashboard"}/>
-            )
-        }}
-        />
-    )
-}
+    return <Route path={path} element={element} />;
+};
 
 export default ProtectedRoute;
 
 ProtectedRoute.propTypes = {
-    isPrivate: PropTypes.bool,
-    component: PropTypes.elementType.isRequired,
+    path: PropTypes.string.isRequired,
+    element: PropTypes.element.isRequired,
 }
