@@ -27,7 +27,7 @@ export const LoginForm = ({ labelText, labelPasswordText }) => {
 
   const handleLogin = async (data) => {
     try {
-      const response = await Api.post("/login", data);
+      const response = await Api.post("/users", data);
       const { token } = response.data;
       localStorage.setItem("token", token);
       toast.success("Logged in successfully!");

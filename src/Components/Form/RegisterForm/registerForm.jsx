@@ -30,13 +30,17 @@ export const RegisterForm = ({
   const handleSignUp = async (data) => {
     try {
       const response = await Api.post("/users", data)
+      const { token } = response.data
+      localStorage.setItem("token", token)
       toast.success("User registered: ", response.data)
-      navigate("/")
+  
+      navigate("/");
+      
     } catch (error){
-      toast.error("Error registering user: ", error)
+      toast.error("Error registering user: ", error);
     }
-  }
-
+  };
+  
 
   return (
     <form onSubmit={handleSubmit(handleSignUp)}>

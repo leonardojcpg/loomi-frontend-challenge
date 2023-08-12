@@ -22,14 +22,12 @@ def login():
     data = request.get_json()
     email = data['email']
     password = data['password']
-    # Verificar as credenciais no banco de dados
     cursor = connection.cursor()
     command = "SELECT id FROM users WHERE email = %s AND password = %s"
     values = (email, password)
     cursor.execute(command, values)
     user_id = cursor.fetchone()
     if user_id:
-        # Usuário encontrado, gerar token com o user_id
         token = jwt.encode({'user_id': user_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, apiServer.config['SECRET_KEY'], algorithm='HS256')
         cursor.close()
         return jsonify({'token': token})
