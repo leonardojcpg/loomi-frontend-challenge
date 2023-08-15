@@ -1,17 +1,18 @@
-import upImg from "./assets/upDashboardImg.svg"
-import downImg from "./assets/downDashboardImg.svg"
-import {HeaderImg, FooterImg} from './styles'
-
+import upImg from "./assets/upDashboardImg.svg";
+import downImg from "./assets/downDashboardImg.svg";
+import { HeaderImg, FooterImg, ContainerContent, FooterImgContent } from "./styles";
 
 export const BackgroundDashboard = () => {
   return (
-    <div className="containerContent">
+    <ContainerContent>
       <HeaderImg>
         <img src={upImg} alt="" height={150} width={250} />
       </HeaderImg>
       <FooterImg>
-      <img src={downImg} alt=""  height={250} width={250}/>
+        <FooterImgContent>
+          <img src={downImg} alt="" height={250} width={250} />
+        </FooterImgContent>
       </FooterImg>
-    </div>
+    </ContainerContent>
   );
 };
