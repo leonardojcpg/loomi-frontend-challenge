@@ -1,9 +1,9 @@
-import { CornerPage } from "../../Components/CornerPage"
+import { BackgroundDashboard } from "../../Components/BackgroundDashboard"
 
 export const Dashboard = () => {
     return (
         <>
-        <CornerPage/>
+        <BackgroundDashboard />
         </>
     )
 }
