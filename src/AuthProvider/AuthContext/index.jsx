@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
           const response = await Api.post("/login", data);
           const { token, email } = response.data;
       
-          localStorage.setItem("@loomiChallange:token", token);
+          localStorage.setItem("@loomiChallenge:token", token);
           localStorage.setItem("@loomiChallenge:email", JSON.stringify(email));
       
           setData({ token, email });
@@ -32,8 +32,8 @@ export const AuthProvider = ({children}) => {
       
 
     const logout = () => {
-        localStorage.removeItem("@loomiChallange:token");
-        localStorage.removeItem("@loomiChallange:email");
+        localStorage.removeItem("@loomiChallenge:token");
+        localStorage.removeItem("@loomiChallenge:email");
 
         setData({});
 

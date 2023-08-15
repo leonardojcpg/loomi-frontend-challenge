@@ -1,16 +1,18 @@
-import '../src/Themes/globalStyle.css'
-import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from './Themes/default'
+import "../src/Themes/globalStyle.css";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./Themes/default";
 
-import { RouteApp } from './Routes'
+import { RouteApp } from "../src/Routes/index";
+import { AuthProvider } from "./AuthProvider/AuthContext";
 
 function App() {
-
   return (
     <ThemeProvider theme={defaultTheme}>
-      <RouteApp />
+      <AuthProvider>
+        <RouteApp />
+      </AuthProvider>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;
