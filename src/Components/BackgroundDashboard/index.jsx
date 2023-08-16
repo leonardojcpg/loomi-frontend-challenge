@@ -1,6 +1,15 @@
 import upImg from "./assets/upDashboardImg.svg";
 import downImg from "./assets/downDashboardImg.svg";
-import { HeaderImg, FooterImg, ContainerContent, FooterImgContent } from "./styles";
+import dashboardImg from "../SidebarDashboardButton/assets/dashboard.svg";
+
+import {
+  HeaderImg,
+  FooterImg,
+  ContainerContent,
+  FooterImgContent,
+  DashboardImgButton,
+  DashboardButtonContainer,
+} from "./styles";
 import { SidebarDashboardButton } from "../SidebarDashboardButton";
 
 export const BackgroundDashboard = () => {
@@ -14,7 +23,10 @@ export const BackgroundDashboard = () => {
           <img src={downImg} alt="" height={250} width={250} />
         </FooterImgContent>
       </FooterImg>
-      <SidebarDashboardButton buttonName="Dashboard"/>
+      <DashboardButtonContainer>
+        <DashboardImgButton src={dashboardImg} alt="" />
+        <SidebarDashboardButton buttonName="Dashboard" />
+      </DashboardButtonContainer>
     </ContainerContent>
   );
 };

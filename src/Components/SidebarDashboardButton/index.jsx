@@ -1,18 +1,21 @@
-import { Button } from "@chakra-ui/react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { DashboardButton } from "./styles.js";
 
-export const SidebarDashboardButton = ({buttonName}) => {
+export const SidebarDashboardButton = ({ buttonName }) => {
   const navigate = useNavigate();
 
   const handleSubmitDashboard = () => {
     navigate("/dashboard");
-  }; 
+  };
 
-  return <Button colorScheme='teal' variant='outline' onClick={handleSubmitDashboard}>{buttonName}</Button>;
+  return (
+    <DashboardButton onClick={handleSubmitDashboard}>
+      {buttonName}
+    </DashboardButton>
+  );
 };
 
-
 SidebarDashboardButton.propTypes = {
-    buttonName: PropTypes.string.isRequired,
-}
+  buttonName: PropTypes.string.isRequired,
+};

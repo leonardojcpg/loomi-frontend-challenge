@@ -26,3 +26,28 @@ export const FooterImgContent = styled.div`
     align-items: flex-end;
     margin-bottom: -4rem;
 `;
+
+
+export const DashboardImgButton = styled.img`
+    align-items: center;
+    display: flex;
+    position: fixed;
+    transform: translateY(-50%);
+    transform: translateX(140%);
+    font-family: "Source Sans Pro";
+    font-weight: 500;
+    color: #558b2f;
+    letter-spacing: 0.04rem;
+    z-index: 1;
+    top: 9rem;
+
+`
+export const DashboardButtonContainer = styled.div`
+    position: relative; /* Permite posicionar elementos filhos */
+    display: inline-flex;
+    align-items: center;
+    
+    &:hover{
+        opacity: 90%;
+    }
+`
